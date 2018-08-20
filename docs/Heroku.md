@@ -4,13 +4,13 @@ cd stringer
 heroku create
 git push heroku master
 
-heroku config:set APP_URL=`heroku apps:info --shell | grep web_url | cut -d= -f2`
+heroku config:set APP_URL=`heroku apps:info --shell | grep web-url | cut -d= -f2`
 heroku config:set SECRET_TOKEN=`openssl rand -hex 20`
 
 heroku run rake db:migrate
 heroku restart
 
-heroku addons:add scheduler
+heroku addons:create scheduler
 heroku addons:open scheduler
 ```
 
